@@ -19,6 +19,10 @@ namespace JogoXadrezTent3
             imprimirPecasCapturadas(partida);
             Console.WriteLine("\nTurno: " + partida.turno);
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            if (partida.xeque)
+            {
+                Console.WriteLine("XEQUE!");
+            }
 
         }
 
@@ -93,6 +97,7 @@ namespace JogoXadrezTent3
                     imprimirPeca(tab.peca(i, j));
                     
                 }
+                Console.BackgroundColor = bgColor;
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
