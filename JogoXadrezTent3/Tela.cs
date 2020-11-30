@@ -16,12 +16,35 @@ namespace JogoXadrezTent3
                 for (int j = 0; j < tab.colunas; j++)
                 {
                     imprimirPeca(tab.peca(i, j));
-                    Console.Write(" ");
-
                 }
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
+        }
+        public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
+        {
+            ConsoleColor bgOriginal = Console.BackgroundColor;
+            ConsoleColor bgAlterado = ConsoleColor.DarkGray;
+            for (int i = 0; i < tab.linhas; i++)
+            {
+                Console.Write(8 - i + " ");
+                for (int j = 0; j < tab.colunas; j++)
+                {
+                    if (posicoesPossiveis[i, j])
+                    {
+                        Console.BackgroundColor = bgAlterado;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = bgOriginal;
+                    }
+                    imprimirPeca(tab.peca(i, j));
+                    
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("  a b c d e f g h");
+            Console.BackgroundColor = bgOriginal;
         }
 
         public static PosicaoXadrez lerPosicaoXadrez()
@@ -39,7 +62,7 @@ namespace JogoXadrezTent3
             ConsoleColor fgColor = Console.ForegroundColor;
             if (peca == null)
             {
-                Console.Write("-");
+                Console.Write("- ");
             }
             else
             {
@@ -59,6 +82,8 @@ namespace JogoXadrezTent3
                     Console.BackgroundColor = bgColor;
                     Console.ForegroundColor = fgColor;
                 }
+                Console.Write(" ");
+
 
             }
         }

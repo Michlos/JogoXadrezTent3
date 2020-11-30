@@ -21,6 +21,11 @@ namespace JogoXadrezTent3
 
                     Console.Write("\nORIGEM: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
                     Console.Write("DESTINO: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
