@@ -18,22 +18,32 @@ namespace JogoXadrezTent3
             Console.WriteLine();
             imprimirPecasCapturadas(partida);
             Console.WriteLine("\nTurno: " + partida.turno);
-            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-            if (partida.xeque)
+
+            if (!partida.terminada)
             {
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
             }
 
         }
 
         public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
         {
-            
+
 
             Console.WriteLine("Peças Capturadas:");
             Console.Write("Brancas: ");
             imprimirConjunto(partida.pecasCapturadas(Cor.Branca));
-            
+
             Console.Write("\nPretas: ");
             imprimirConjunto(partida.pecasCapturadas(Cor.Preta));
             Console.WriteLine();
@@ -95,7 +105,7 @@ namespace JogoXadrezTent3
                         Console.BackgroundColor = bgColor;
                     }
                     imprimirPeca(tab.peca(i, j));
-                    
+
                 }
                 Console.BackgroundColor = bgColor;
                 Console.WriteLine();
